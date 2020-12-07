@@ -58,6 +58,10 @@ class LocationWidget {
   }
 
   updateText() {
+    if (!this.city) {
+      this.locationText.textontent = "Namaste!";
+    }
+
     this.locationText.textContent = `${this.city
       .split(" ")
       .map(toTitleCase)
