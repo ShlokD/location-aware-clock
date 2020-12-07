@@ -1,0 +1,15 @@
+{
+  "name": "location-clock",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {},
+  "scripts": {
+    "build": "parcel bundler index.html --public-url=https://shlokd.github.io/location-aware-clock"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  }
+}
