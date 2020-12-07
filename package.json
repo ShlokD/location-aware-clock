@@ -4,7 +4,7 @@
   "main": "app.js",
   "dependencies": {},
   "scripts": {
-    "build": "rimraf dist/ && parcel build index.html --public-url=https://shlokd.github.io/location-aware-clock"
+    "build": "rimraf dist/ && parcel build index.html --public-url=https://shlokd.github.io/location-aware-clock/"
   },
   "author": "",
   "license": "ISC",

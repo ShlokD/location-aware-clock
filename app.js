@@ -59,13 +59,13 @@ class LocationWidget {
 
   updateText() {
     if (!this.city) {
-      this.locationText.textontent = "Namaste!";
+      this.locationText.textContent = "Namaste!";
+    } else {
+      this.locationText.textContent = `${this.city
+        .split(" ")
+        .map(toTitleCase)
+        .join(" ")}, ${this.state}`;
     }
-
-    this.locationText.textContent = `${this.city
-      .split(" ")
-      .map(toTitleCase)
-      .join(" ")}, ${this.state}`;
   }
 }
 
