@@ -81,11 +81,20 @@ const startApp = () => {
 
   const showImage = () => image.setImageSrc(featuredImageSrc);
 
+  const createAbortController = ({ timeout }) => {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), timeout);
+    return controller;
+  };
+
   const onSuccess = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+    const controller = createAbortController({ timeout: 4000 });
+
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://geocode.xyz/${latitude},${longitude}?geoit=json`
+      `https://cors-anywhere.herokuapp.com/https://geocode.xyz/${latitude},${longitude}?geoit=json`,
+      { signal: controller.signal }
     )
       .then((res) => res.json())
       .then((response) => {
