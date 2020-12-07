@@ -84,6 +84,8 @@ const startApp = () => {
     clock.start();
   });
 
+  const showImage = () => image.setImageSrc(featuredImageSrc);
+
   const onSuccess = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -94,16 +96,15 @@ const startApp = () => {
         featuredImageSrc += `,${city.toLowerCase()}`;
         locationWidget.setCity(city);
         locationWidget.setState(state);
-        image.setImageSrc(featuredImageSrc);
-      });
+        showImage();
+      })
+      .catch(showImage);
   };
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(onSuccess, () =>
-      image.setImageSrc(featuredImageSrc)
-    );
+    navigator.geolocation.getCurrentPosition(onSuccess, () => showImage());
   } else {
-    image.setImageSrc(featuredImageSrc);
+    showImage();
   }
 };
 
