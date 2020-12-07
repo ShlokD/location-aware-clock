@@ -46,15 +46,10 @@ class LocationWidget {
   constructor() {
     this.locationText = document.querySelector("#location");
     this.city = "";
-    this.state = "";
   }
 
   setCity(city) {
     this.city = city;
-  }
-
-  setState(state) {
-    this.state = state;
   }
 
   updateText() {
@@ -64,7 +59,7 @@ class LocationWidget {
       this.locationText.textContent = `${this.city
         .split(" ")
         .map(toTitleCase)
-        .join(" ")}, ${this.state}`;
+        .join(" ")}`;
     }
   }
 }
@@ -94,10 +89,9 @@ const startApp = () => {
     )
       .then((res) => res.json())
       .then((response) => {
-        const { city, state } = response;
+        const { city } = response;
         featuredImageSrc += `,${city.toLowerCase()}`;
         locationWidget.setCity(city);
-        locationWidget.setState(state);
         showImage();
       })
       .catch(showImage);
