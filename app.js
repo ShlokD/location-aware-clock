@@ -89,7 +89,9 @@ const startApp = () => {
   const onSuccess = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    fetch(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
+    fetch(
+      `https://cors-anywhere.herokuapp.com/https://geocode.xyz/${latitude},${longitude}?geoit=json`
+    )
       .then((res) => res.json())
       .then((response) => {
         const { city, state } = response;
