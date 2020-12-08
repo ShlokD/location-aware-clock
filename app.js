@@ -1,9 +1,17 @@
 // utility functions
 const padZero = (num) => (num >= 10 ? num : `0${num}`);
 
-const isPM = () => {
+const timeOfDay = () => {
   const date = new Date();
-  return date.getHours() > 12;
+  if (date.getHours() > 0 && date.getHours() < 11) {
+    return "morning";
+  } else if (date.getHours() >= 11 && date.getHours() < 17) {
+    return "noon";
+  } else if (date.getHours() >= 17 && date.getHours() < 21) {
+    return "evening";
+  }
+
+  return "night";
 };
 
 const toTitleCase = (text) => text[0] + text.slice(1).toLowerCase();
@@ -69,7 +77,7 @@ class LocationWidget {
 const startApp = () => {
   let featuredImageSrc = `https://source.unsplash.com/random/${
     window.innerWidth
-  }x${window.innerHeight - 4}?${isPM() ? "night" : "day"}`;
+  }x${window.innerHeight - 4}?${timeOfDay()}`;
   const locationWidget = new LocationWidget();
   const clock = new Clock();
   const image = new Image(featuredImageSrc);
